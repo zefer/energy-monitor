@@ -1,5 +1,5 @@
 class ElectricityUsage
-  attr_reader :trans, :mac, :time, :current_usage, :today_usage
+  attr_reader :trans, :mac, :time, :current, :today
 
   def self.from_raw(message)
     m = message.sub('*!', '')
@@ -8,15 +8,15 @@ class ElectricityUsage
     new(d['trans'], d['mac'], d['time'], d['cUse'], d['todUse'])
   end
 
-  def initialize(trans, mac, time, current_usage, today_usage)
+  def initialize(trans, mac, time, current, today)
     @trans = trans
     @mac = mac
     @time = time
-    @current_usage = current_usage
-    @today_usage = today_usage
+    @current = current
+    @today = today
   end
 
   def to_s
-    "[#{Time.at(@time).utc}] #{self.class.name}: #{@current_usage} W"
+    "[#{Time.at(@time).utc}] #{self.class.name}: #{@current} W"
   end
 end
