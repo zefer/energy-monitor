@@ -19,12 +19,9 @@ class Client
     @socket.bind(BIND_ADDR, PORT)
   end
 
-  def listen
-    loop do
-      m, = @socket.recvfrom(2000)
-      puts ElectricityUsage.from_raw(m).to_s
-    end
+  def receive
+    message, = @socket.recvfrom(2000)
+
+    message
   end
 end
-
-Client.new.listen
