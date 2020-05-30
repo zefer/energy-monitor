@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker rm energy-monitor
+docker run -it -p 9761:9761/udp --env INFLUXDB_URL=$INFLUXDB_URL --name energy-monitor energy-monitor

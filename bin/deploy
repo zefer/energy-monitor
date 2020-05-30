@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker save energy-monitor > energy-monitor.tar
+scp energy-monitor.tar curtis:/volume1/docker/images
