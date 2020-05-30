@@ -5,6 +5,8 @@ class ElectricityUsage
     m = message.sub('*!', '')
     d = JSON.parse(m)
 
+    return unless d['fn'] == 'meterData'
+
     new(d['trans'], d['mac'], d['time'], d['cUse'], d['todUse'])
   end
 
