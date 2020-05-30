@@ -1,6 +1,7 @@
 require 'socket'
 require 'ipaddr'
 require 'json'
+require_relative 'electricity_usage'
 
 class Client
   MULTICAST_ADDR = '224.0.0.1'.freeze
@@ -21,9 +22,7 @@ class Client
   def listen
     loop do
       m, = @socket.recvfrom(2000)
-      m = m.sub('*!', '')
-      record = JSON.parse(m)
-      p record
+      puts ElectricityUsage.from_raw(m).to_s
     end
   end
 end
