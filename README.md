@@ -7,8 +7,8 @@ database so it can be plotted on a Grafana dashboard.
 ## Links
 
 - [LightwaveRF Energy Monitor](https://lightwaverf.com/products/jsjslw600-lightwaverf-electricity-monitor-and-energy-monitor)
-- [InfluxDB][https://influxdata.com/time-series-platform/influxdb/]
-- [influxdb-ruby][https://github.com/influxdata/influxdb-ruby]
+- [InfluxDB](https://influxdata.com/time-series-platform/influxdb/)
+- [influxdb-ruby](https://github.com/influxdata/influxdb-ruby)
 - [Grafana](https://grafana.com/)
 
 ## Docker
