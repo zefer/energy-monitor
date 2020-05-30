@@ -1,5 +1,5 @@
-require_relative 'client'
-require_relative 'electricity_usage'
+require_relative 'lib/client'
+require_relative 'lib/electricity_usage'
 
 client = Client.new
 
