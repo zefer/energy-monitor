@@ -1,13 +1,21 @@
+require 'json'
+
 class ElectricityUsage
   attr_reader :trans, :mac, :time, :current, :today
 
   def self.from_raw(message)
-    m = message.sub('*!', '')
+    m = message.sub(/.*\{/, '{')
     d = JSON.parse(m)
 
-    return unless d['fn'] == 'meterData'
+    unless d['fn'] == 'meterData'
+      puts "Ignoring message: #{message}"
+
+      return nil
+    end
 
     new(d['trans'], d['mac'], d['time'], d['cUse'], d['todUse'])
+  rescue JSON::ParserError
+    puts "Invalid message: #{message}"
   end
 
   def initialize(trans, mac, time, current, today)
