@@ -1,7 +1,7 @@
 # Energy Monitor
 
 This listens for, decodes, and sends electricity usage to an InfluxDB database
-so it can be plotted on a Grafana dashboard.
+so it can be plotted on a Grafana dashboard and MQTT for home automation tools.
 
 The electricity usage data used comes from a LightwaveRF Electricity Monitor
 which broadcasts usage over UDP on port 9761.
@@ -17,6 +17,7 @@ Here is mine.
 - [LightwaveRF Energy Monitor](https://lightwaverf.com/products/jsjslw600-lightwaverf-electricity-monitor-and-energy-monitor)
 - [InfluxDB](https://influxdata.com/time-series-platform/influxdb/)
 - [influxdb-ruby](https://github.com/influxdata/influxdb-ruby)
+- [ruby-mqtt](https://github.com/njh/ruby-mqtt)
 - [Grafana](https://grafana.com/)
 
 ## Docker
@@ -28,7 +29,7 @@ Included is sample Docker usage based on how I'm running this at home.
 docker build -t energy-monitor .
 
 # Run it, exposing the UDP broadcast port & configuring the target InfluxDB.
-docker run -it -p 9761:9761/udp --env INFLUXDB_URL=$INFLUXDB_URL --name energy-monitor energy-monitor
+docker run -it -p 9761:9761/udp --env INFLUXDB_URL=$INFLUXDB_URL --env MQTT_URL=$MQTT_URL --name energy-monitor energy-monitor
 
 # Save the docker image to a local file, for distribution.
 docker save energy-monitor > energy-monitor.tar
